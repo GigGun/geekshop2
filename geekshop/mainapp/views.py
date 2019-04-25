@@ -4,12 +4,12 @@ from django.shortcuts import render
 
 
 def main(request):
-    content = {
-        'title': title,
-        'links_menu': links_menu,
-        'same_prpducts': same_products
-    }
-    return render(request, 'mainapp/index.html', content)
+    # content = {
+    #     'title': title,
+    #     'links_menu': links_menu,
+    #     'same_prpducts': same_products
+    # }
+    return render(request, 'mainapp/index.html')
 
 
 def products(request):
