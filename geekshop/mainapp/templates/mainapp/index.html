@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 {% load staticfiles%}
-{% extend 'mainapp/base.html' %}
 <html lang="en">
 
 <head>
@@ -11,7 +10,7 @@
         <a class="logo" href="index.html"><img src="images/logo.png" alt="Логотип"></a>
         <div class="div-menu">
             <a href="index.html" class="start_menu-link">Главная</a>
-            <a href="{% url 'product' %}" class="start_menu-link">Каталог</a>
+            <a href="{% url 'products' %}" class="start_menu-link">Каталог</a>
             <a href="{% url 'contact' %}" class="start_menu-link">Контакты</a>
         </div>
     </div>
