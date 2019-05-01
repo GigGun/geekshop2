@@ -3,9 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 
 context = {'title': 'Вагончик',
-           'main': 'Главная',
-           'products': 'Каталог',
-           'contact': 'Контакты', }
+           'links_menu': {'main': 'Главная', 'products': 'Каталог', 'contact': 'Контакты'}, }
 
 
 def main(request):
