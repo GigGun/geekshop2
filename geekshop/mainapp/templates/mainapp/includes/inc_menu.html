@@ -3,8 +3,8 @@
 <div class="container">
     <a class="logo" href="{% url 'main' %}"><img src="{% static 'img/logo.png' %}" alt="Логотип"></a>
     <div class="div-menu">
-        <a href="{% url 'main' %}" class="start_menu-link">Главная</a>
-        <a href="{% url 'products' %}" class="start_menu-link">Каталог</a>
-        <a href="{% url 'contact' %}" class="start_menu-link">Контакты</a>
+        <a href="{% url 'main' %}" class="start_menu-link">{{ links_menu.main|title }}</a>
+        <a href="{% url 'products' %}" class="start_menu-link">{{ links_menu.products|title }}</a>
+        <a href="{% url 'contact' %}" class="start_menu-link">{{ links_menu.contact|title }}</a>
     </div>
 </div>
