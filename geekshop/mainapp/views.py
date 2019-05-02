@@ -1,9 +1,10 @@
 from django.shortcuts import render
 
-# Create your views here.
+from .models import ProductCategory, Product
 
 context = {'title': 'Вагончик',
-           'links_menu': {'main': 'Главная', 'products': 'Каталог', 'contact': 'Контакты'}, }
+           'links_menu': {'main': 'Главная', 'products': 'Каталог', 'contact': 'Контакты'},
+           'products': Product.objects.all()}
 
 
 def main(request):
