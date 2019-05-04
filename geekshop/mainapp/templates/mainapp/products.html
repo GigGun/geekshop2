@@ -3,22 +3,19 @@
 {% load staticfiles %}
 
 {% block content %}
-<body>
 
 {% for product in products %}
 <div class="block">
-    <a href="catalog-menu-link">
+    <a class="catalog-menu-link">
         <img class="img-catalog" src="/media/{{ product.image }}" alt="{{ product.short_desc }}">
         <div class="block">
             <h3>{{ product.category.name }}</h3>
             <h4>{{ product.name }}</h4>
-<!--            <p>{{ product.description }}</p>-->
         </div>
     </a>
 </div>
 {% endfor %}
 
-</body>
 {% endblock %}
 
 
