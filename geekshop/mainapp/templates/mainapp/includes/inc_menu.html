@@ -6,5 +6,15 @@
         <a href="{% url 'main' %}" class="start_menu-link">{{ links_menu.main|title }}</a>
         <a href="{% url 'products:index' %}" class="start_menu-link">{{ links_menu.products|title }}</a>
         <a href="{% url 'contact' %}" class="start_menu-link">{{ links_menu.contact|title }}</a>
+
+        {% if user.is_authenticated %}
+            <a href="{% url 'auth:edit' %}">{{ user.first_name|default:'Пользователь' }}</a>>
+        {% endif %}
+
+        {% if user.is_authenticated %}
+             <a href="{% url 'auth:logout' %}">выйти</a>
+        {% else %}
+            <a href="{% url 'auth:login' %}">войти</a>
+        {% endif %}
     </div>
 </div>
