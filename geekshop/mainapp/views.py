@@ -39,7 +39,7 @@ def products(request, pk=None):
 
     context = {'title': title,
                'links_menu': links_menu,
-               'same_products': same_products}
+               'same_products': same_products, }
 
     return render(request, 'mainapp/products.html', context)
 
