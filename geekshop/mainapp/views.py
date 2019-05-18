@@ -16,10 +16,11 @@ def main(request):
 
 
 def products(request, pk=None):
-    print(pk)
+    print(f'pk={pk}')
 
     title = 'продукты'
     links_menu = ProductCategory.objects.all()
+
 
     if pk is not None:
         if pk == 0:
@@ -33,9 +34,10 @@ def products(request, pk=None):
                    'links_menu': links_menu,
                    'category': category,
                    'products': products, }
-        return render(request, 'mainapp/products.html', context)
+        return render(request, 'mainapp/products_list.html', context)
 
-    same_products = Product.objects.all()[3:5]
+    same_products = Product.objects.all()[6:8]
+    print(same_products)
 
     context = {'title': title,
                'links_menu': links_menu,

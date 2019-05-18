@@ -15,6 +15,9 @@
                   <Item>
                     <option name="path" value="geekshop/mainapp/json/categories.json" />
                   </Item>
+                  <Item>
+                    <option name="path" value="geekshop/mainapp/json/products.json" />
+                  </Item>
                 </list>
               </option>
             </SchemaInfo>
