@@ -26,9 +26,12 @@ def products(request, pk=None):
         if pk == 0:
             products_obj = Product.objects.all().order_by('price')
             category = {'name': 'все'}
+
         else:
             category = get_object_or_404(ProductCategory, pk=pk)
             products_obj = Product.objects.filter(category__pk=pk).order_by('price')
+            print(f'{products_obj}')
+            print(f'{category}')
 
         context = {'title': title,
                    'links_menu': links_menu,
