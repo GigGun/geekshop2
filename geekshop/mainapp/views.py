@@ -6,7 +6,7 @@ from .models import ProductCategory, Product
 
 context = {'title': 'Вагончик',
            'links_menu': {'main': 'Главная', 'products': 'Каталог', 'contact': 'Контакты'},
-           'categories': ProductCategory.objects.all(),
+           'category': ProductCategory.objects.all(),
            'products': Product.objects.all(),
            }
 
