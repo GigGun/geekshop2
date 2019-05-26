@@ -12,6 +12,8 @@
             <h3>{{ product.category.name }}</h3>
             <h4>{{ product.name }}</h4>
             <a href="{% url 'basket:add' product.pk %}">Добавить в корзину</a>
+            <br>
+            <a href="{% url 'basket:delete' product.pk %}">Удалить из корзины</a>
         </div>
     </a>
 </div>
