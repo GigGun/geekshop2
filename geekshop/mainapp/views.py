@@ -18,10 +18,11 @@ def main(request):
 def products(request, pk=None):
 
     basket = []
-    if request.user.is_authenticated():
+    if request.user.is_authenticated:
         basket = BasketSlot.objects.filter(user=request.user)
 
-    total_quatity = sum(list(map(lambda basket_slot: basket_slot.quantity, basket())))
+    total_quantity = sum(list(map(lambda basket_slot: basket_slot.quantity, basket)))
+    print(total_quantity)
 
     title = 'продукты'
     links_menu = ProductCategory.objects.all()
@@ -38,15 +39,15 @@ def products(request, pk=None):
         context = {'title': title,
                    'links_menu': links_menu,
                    'category': category,
-                   'products': products_obj,
-                   'basket_quantity': total_quatity, }
+                   'products': products_obj, }
         return render(request, 'mainapp/product_list.html', context)
 
     same_products = Product.objects.all()[1:3]
 
     context = {'title': title,
                'links_menu': links_menu,
-               'products': same_products, }
+               'products': same_products,
+               'basket_quantity': total_quantity, }
 
     return render(request, 'mainapp/products.html', context)
 
