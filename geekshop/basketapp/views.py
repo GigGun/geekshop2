@@ -3,6 +3,11 @@ from .models import BasketSlot
 from mainapp.models import Product
 
 
+def basket(request):
+    context = {}
+    return render(request, 'basketapp/basket.html', context)
+
+
 def add(request, pk=None):
     product = get_object_or_404(Product, pk=pk)
 
