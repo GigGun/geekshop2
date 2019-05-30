@@ -63,6 +63,18 @@ def contact(request):
     return render(request, 'mainapp/contact.html', context)
 
 
+def product(request, pk):
+    title = 'продукты'
+
+    context = {
+        'title': title,
+        'links_menu': ProductCategory.objects.all(),
+        'product': get_object_or_404(Product, pk=pk),
+        'basket': get_basket(request.user), }
+
+    return render(request, 'mainapp/product.html', context)
+
+
 def get_basket(user):
     if user.is_authenticated:
         return BasketSlot.objects.filter(user=user)
