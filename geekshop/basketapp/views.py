@@ -6,7 +6,7 @@ from mainapp.models import Product
 def basket(request):
     title = 'корзина'
     basket_items = BasketSlot.objects.filter(user=request.user).\
-        order_by('product_category')
+        order_by('product__category')
 
     context = {
         'title': title,
