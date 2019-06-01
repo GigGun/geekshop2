@@ -28,6 +28,9 @@ def basket_remove(request, pk):
 
 @login_required
 def add(request, pk=None):
+    if 'login' in request.META.get('HTTP_REFERER'):
+        return HttpResponseRedirect(reverse('products:product', args=[pk]))
+
     product = get_object_or_404(Product, pk=pk)
 
     basket_slot_old = BasketSlot.objects.filter(product=product).first()
