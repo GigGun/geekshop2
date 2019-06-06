@@ -3,7 +3,7 @@ from django.urls import path
 
 app_name = 'adminapp'
 
-urlpattern = {
+urlpatterns = {
     path('users/create/', adminapp.user_create, name='user_create'),
     path('users/read/', adminapp.users, name='users'),
     path('users/update/<int:pk>/', adminapp.user_update, name='user_update'),
