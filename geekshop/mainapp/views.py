@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .models import ProductCategory, Product
 from basketapp.models import BasketSlot
@@ -17,7 +18,7 @@ def main(request):
     return render(request, 'mainapp/index.html', context)
 
 
-def products(request, pk=None):
+def products(request, pk=None, page=1):
 
     basket = []
     if request.user.is_authenticated:
@@ -32,17 +33,32 @@ def products(request, pk=None):
 
     if pk is not None:
         if pk == 0:
-            products_obj = Product.objects.all().order_by('price')
-            category = {'name': 'все'}
-
+            category = {
+                'pk': 0,
+                'name': 'все', }
+            products_obj = Product.objects.filter(is_active=True,
+                                                  category__is_active=True).\
+                order_by('price')
         else:
             category = get_object_or_404(ProductCategory, pk=pk)
-            products_obj = Product.objects.filter(category__pk=pk).order_by('price')
+            products_obj = Product.objects.filter(category__pk=pk,
+                                                  is_active=True,
+                                                  category__is_active=True).\
+                order_by('price')
+
+        paginator = Paginator(products, 2)
+        try:
+            products_paginator = paginator.page(page)
+        except PageNotAnInteger:
+            products_paginator = paginator.page(1)
+        except EmptyPage:
+            products_paginator = paginator.page(paginator.num_pages)
 
         context = {'title': title,
                    'links_menu': links_menu,
                    'category': category,
-                   'products': products_obj, }
+                   'products': products_paginator,
+                   'basket': basket, }
         return render(request, 'mainapp/product_list.html', context)
 
     hot_product = get_hot_product()
