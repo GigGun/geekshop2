@@ -45,7 +45,7 @@
             <h4>{{ product.name }}</h4>
             <a href="{% url 'products:product' product.pk %}">Добавить в корзину</a>
             <br>
-            <a href="{% url 'basket:delete' product.pk %}">Удалить из корзины</a>
+            <a href="{% url 'basket:remove' product.pk %}">Удалить из корзины</a>
         </div>
     </a>
 </div>
