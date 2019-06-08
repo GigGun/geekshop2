@@ -119,7 +119,11 @@ def product_create(request, pk):
 
 
 def product_read(request, pk):
-    pass
+    title = 'продукт/подробнее'
+    product = get_object_or_404(Product, pk=pk)
+    context = {'title': title, 'object': product, }
+
+    return render(request, 'adminapp/product_read.html', context)
 
 
 def product_update(request, pk):
