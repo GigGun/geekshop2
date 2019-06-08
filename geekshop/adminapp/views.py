@@ -133,7 +133,6 @@ def product_create(request, pk):
         return render(request, 'adminapp/product_update.html', context)
 
 
-
 def product_read(request, pk):
     title = 'продукт/подробнее'
     product = get_object_or_404(Product, pk=pk)
@@ -143,7 +142,25 @@ def product_read(request, pk):
 
 
 def product_update(request, pk):
-    pass
+    title = 'продукт/редактирование'
+    edit_product = get_object_or_404(Product, pk=pk)
+
+    if request.method == 'POST':
+        edit_form = ProductEditForm(request.POST, request.FILES,
+                                    instance=edit_product)
+
+        if edit_form.is_valid():
+            edit_form.save()
+            return HttpResponseRedirect(reverse('admin:product_update',
+                                                args=[edit_product.pk]))
+    else:
+        edit_form = ProductEditForm(instance=edit_product)
+
+    context = {'title': title,
+               'update_form': edit_form,
+               'category': edit_product.category, }
+
+    return render(request, 'adminapp/product_update.html', context)
 
 
 def product_delete(request, pk):
