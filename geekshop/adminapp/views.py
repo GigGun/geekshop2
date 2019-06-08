@@ -115,7 +115,23 @@ def products(request, pk):
 
 
 def product_create(request, pk):
-    pass
+    title = 'продук/создание'
+    category = get_object_or_404(ProductCategory, pk=pk)
+
+    if request.method == 'POST':
+        product_form = ProductEditForm(request.POST, request.FILES)
+        if product_form.is_valid():
+            product_form.save()
+            return HttpResponseRedirect(reverse('admin:products', args=[pk]))
+        else:
+            product_form = ProductEditForm(initial={'category': category})
+
+        context = {'title': title,
+                   'update_form': product_form,
+                   'category': category, }
+
+        return render(request, 'adminapp/product_update.html', context)
+
 
 
 def product_read(request, pk):
