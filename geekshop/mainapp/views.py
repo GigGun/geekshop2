@@ -85,7 +85,7 @@ def get_hot_product():
     return rnd.sample(list(products), 1)[0]
 
 
-def get_same_prducts(hot_product):
+def get_same_products(hot_product):
     same_products = Product.objects.filter(category=hot_product.category).\
                         exclude(pk=hot_product.pk)[:3]
     return same_products
