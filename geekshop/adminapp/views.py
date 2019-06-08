@@ -164,4 +164,15 @@ def product_update(request, pk):
 
 
 def product_delete(request, pk):
-    pass
+    title = 'продукт/удаление'
+
+    product = get_object_or_404(Product, pk=pk)
+
+    if request.method == 'POST':
+        product.is_active = False
+        product.save()
+        return HttpResponseRedirect(reverse('admin:products',
+                                            args=[product.category.pk]))
+    context = {'title': title,
+               'product_to_delete': product, }
+    return render(request, 'adminapp/product_delete.html', context)
