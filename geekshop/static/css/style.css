@@ -160,3 +160,7 @@ td {
     background-image: linear-gradient(to bottom, #1E62D0, #3D94F6);
     text-decoration: none;
 }
+
+.category_record.not_active {
+    opacity: 0.5;
+}
