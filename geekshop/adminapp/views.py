@@ -1,6 +1,8 @@
 from django.shortcuts import get_object_or_404, render, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import user_passes_test
+from django.views.generic.list import ListView
+from django.utils.decorators import method_decorator
 
 from authapp.models import ShopUser
 from authapp.forms import ShopUserRegisterForm
@@ -8,6 +10,14 @@ from authapp.forms import ShopUserAdminEditForm
 
 from mainapp.models import Product, ProductCategory
 
+
+class UsersListView(ListView):
+    model = ShopUser
+    template_name = 'adminapp/users.html'
+
+    @method_decorator(user_passes_test(lambda u: u.is_superuser))
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
 
 
 @user_passes_test(lambda u: u.is_superuser)
