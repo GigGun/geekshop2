@@ -1,7 +1,8 @@
 from django.shortcuts import get_object_or_404, render, HttpResponseRedirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.contrib.auth.decorators import user_passes_test
 from django.views.generic.list import ListView
+from django.views.generic.edit import CreateView, UpdateView
 from django.utils.decorators import method_decorator
 
 from authapp.models import ShopUser
@@ -18,6 +19,27 @@ class UsersListView(ListView):
     @method_decorator(user_passes_test(lambda u: u.is_superuser))
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
+
+
+class ProductCategoryCreateView(CreateView):
+    model = ProductCategory
+    template_name = 'adminapp/category_upate.html'
+    success_url = reverse_lazy('admin:categories')
+    fields = '__all__'
+
+
+class ProductCategoryUpdateView(UpdateView):
+    model = ProductCategory
+    template_name = 'adminapp/category_update.html'
+    success_url = reverse_lazy('admin:categories')
+    fields = '__all__'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'категории/редактирование'
+        print(context)
+
+        return context
 
 
 @user_passes_test(lambda u: u.is_superuser)
