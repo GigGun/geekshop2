@@ -62,7 +62,7 @@ def products(request, pk=None, page=1):
         return render(request, 'mainapp/product_list.html', context)
 
     hot_product = get_hot_product()
-    same_products = get_same_prducts(hot_product)
+    same_products = get_same_products(hot_product)
 
     context = {'title': title,
                'links_menu': links_menu,

@@ -8,7 +8,7 @@ from django.utils.decorators import method_decorator
 
 from authapp.models import ShopUser
 from authapp.forms import ShopUserRegisterForm
-from authapp.forms import ShopUserAdminEditForm
+from authapp.forms import ShopUserEditForm
 
 from mainapp.models import Product, ProductCategory
 
@@ -83,13 +83,13 @@ def user_update(request, pk):
 
     edit_user = get_object_or_404(ShopUser, pk=pk)
     if request.method == 'POST':
-        edit_form = ShopUserAdminEditForm(request.POST, request.FILES, instance=edit_user)
+        edit_form = ShopUserEditForm(request.POST, request.FILES, instance=edit_user)
 
         if edit_form.is_valid():
             edit_form.save()
             return HttpResponseRedirect(reverse('admin:user_update', args=[edit_user.pk]))
     else:
-        edit_form = ShopUserAdminEditForm(instance=edit_user)
+        edit_form = ShopUserEditForm(instance=edit_user)
 
     context = {'title':title, 'update_form': edit_form}
 
