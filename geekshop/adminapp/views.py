@@ -19,7 +19,7 @@ class UsersListView(ListView):
 
     @method_decorator(user_passes_test(lambda u: u.is_superuser))
     def dispatch(self, request, *args, **kwargs):
-        return super().dispatch(*args, **kwargs)
+        return super().dispatch(request=request, *args, **kwargs)
 
 
 class ProductCategoryCreateView(CreateView):
