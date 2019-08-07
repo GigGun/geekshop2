@@ -9,6 +9,10 @@ body {
     margin: 0 auto;
 }
 
+a {
+    text-decoration: None
+}
+
 .logo {
     margin-left: 15px;
     display: block;
@@ -155,4 +159,8 @@ td {
     background-image: -o-linear-gradient(top, #1E62D0, #3D94F6);
     background-image: linear-gradient(to bottom, #1E62D0, #3D94F6);
     text-decoration: none;
+}
+
+.category_record.not_active {
+    opacity: 0.5;
 }
