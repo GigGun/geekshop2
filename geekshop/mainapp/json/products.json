@@ -1,0 +1,30 @@
+[
+  {
+    "category": "полувагон",
+    "name": "Модель 12-132",
+    "short_desc": "",
+    "price": 100000,
+    "quantity": 100
+  },
+  {
+    "category": "крытый",
+    "name": "Модель 11-066",
+    "short_desc": "",
+    "price": 120000,
+    "quantity": 110
+  },
+  {
+    "category": "платформа",
+    "name": "Модель 13-4012",
+    "short_desc": "",
+    "price": 80000,
+    "quantity": 50
+  },
+  {
+    "category": "полувагон",
+    "name": "Модель 12-119",
+    "short_desc": "",
+    "price": 100000,
+    "quantity": 90
+  }
+]
